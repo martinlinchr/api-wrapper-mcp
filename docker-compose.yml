@@ -3,7 +3,7 @@ services:
     build: .
     container_name: api-wrapper-mcp
     environment:
-      API_GATEWAY_TOKEN: "super-secret-mcp-token"
+      API_GATEWAY_TOKEN: "${API_GATEWAY_TOKEN}"
       RYBBIT_API_KEY: "${RYBBIT_API_KEY}"
     ports:
       - "3000:3000"
