@@ -1,0 +1,32 @@
+server:
+  name: "Analytics MCP"
+  description: "Rybbit/Umami API gateway for Claude"
+  version: "1.0.0"
+
+auth:
+  token_env_var: "API_GATEWAY_TOKEN"
+
+tools:
+  - name: "rybbit_get_stats"
+    description: "Hent simple Rybbit stats for et site"
+    endpoint: "https://rybbit.martin-linde.com/api/stats"
+    method: "GET"
+    timeout: 30
+    query_params:
+      site_id: "{{site_id}}"
+      from: "{{from}}"
+      to: "{{to}}"
+      api_key: "{{env:RYBBIT_API_KEY}}"
+    parameters:
+      site_id:
+        type: "string"
+        description: "Rybbit site ID"
+        required: true
+      from:
+        type: "string"
+        description: "Startdato (ISO, fx 2025-01-01)"
+        required: true
+      to:
+        type: "string"
+        description: "Slutdato (ISO)"
+        required: true
