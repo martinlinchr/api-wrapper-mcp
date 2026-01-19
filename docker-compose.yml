@@ -5,5 +5,9 @@ services:
     environment:
       API_GATEWAY_TOKEN: "${API_GATEWAY_TOKEN}"
       RYBBIT_API_KEY: "${RYBBIT_API_KEY}"
-    ports:
-      - "3000:3000"
+
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.api-wrapper-mcp.rule=Host(`mcp.martin-linde.com`)"
+      - "traefik.http.routers.api-wrapper-mcp.entrypoints=websecure"
+      - "traefik.http.routers.api-wrapper-mcp.tls.certresolver=letsencrypt"
