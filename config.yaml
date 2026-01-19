@@ -4,7 +4,7 @@ server:
   version: "1.0.0"
 
 auth:
-  token_env_var: "RYBBIT_API_GATEWAY_TOKEN"
+  token_env_var: "API_GATEWAY_TOKEN"
 
 tools:
   - name: "rybbit_get_overview"
