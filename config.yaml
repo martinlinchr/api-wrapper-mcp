@@ -13,9 +13,9 @@ tools:
     method: "GET"
     timeout: 30
     query_params:
-      site_id: "{{site_id}}"
-      from: "{{from}}"
-      to: "{{to}}"
+      start_date: "{{start_date}}"
+      end_date: "{{end_date}}"
+      time_zone: "{{time_zone}}"
       api_key: "{{env:RYBBIT_API_KEY}}"
     parameters:
       site_id:
