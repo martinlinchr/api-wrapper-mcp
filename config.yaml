@@ -4,29 +4,32 @@ server:
   version: "1.0.0"
 
 auth:
-  token_env_var: "API_GATEWAY_TOKEN"
+  token_env_var: "RYBBIT_API_GATEWAY_TOKEN"
 
 tools:
-  - name: "rybbit_get_stats"
-    description: "Hent simple Rybbit stats for et site"
-    endpoint: "https://rybbit.martin-linde.com/api/stats"
+  - name: "rybbit_get_overview"
+    description: "Hent Rybbit overview for et site i et dato-interval"
+    endpoint: "https://rybbit.martin-linde.com/api/sites/{{site_id}}/overview"
     method: "GET"
     timeout: 30
     query_params:
       start_date: "{{start_date}}"
       end_date: "{{end_date}}"
       time_zone: "{{time_zone}}"
-      api_key: "{{env:RYBBIT_API_KEY}}"
     parameters:
       site_id:
         type: "string"
         description: "Rybbit site ID"
         required: true
-      from:
+      start_date:
         type: "string"
         description: "Startdato (ISO, fx 2025-01-01)"
         required: true
-      to:
+      end_date:
         type: "string"
         description: "Slutdato (ISO)"
         required: true
+      time_zone:
+        type: "string"
+        description: "Time zone, fx Europe/Copenhagen"
+        default: "Europe/Copenhagen"
